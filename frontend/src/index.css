@@ -1,0 +1,123 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --bg: #0a0a0a;
+  --surface: #111111;
+  --surface-2: #1a1a1a;
+  --surface-3: #222222;
+  --border: #2a2a2a;
+  --border-light: #333333;
+  --text: #fafafa;
+  --text-muted: #888888;
+  --text-subtle: #555555;
+  --accent: #ffffff;
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+  --info: #3b82f6;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: var(--border-light);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover { background: #444; }
+
+::selection {
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+}
+
+input, textarea, select {
+  outline: none;
+  font-family: inherit;
+}
+
+button { cursor: pointer; font-family: inherit; }
+
+/* Custom utilities */
+@layer utilities {
+  .text-gradient {
+    background: linear-gradient(135deg, #fff 0%, #888 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .glass {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .border-subtle {
+    border: 1px solid var(--border);
+  }
+
+  .input-base {
+    @apply w-full px-3 py-2 bg-surface-2 border border-border rounded-lg text-text placeholder-text-subtle
+    focus:border-border-light focus:ring-1 focus:ring-border-light transition-colors duration-150 text-sm;
+  }
+
+  .btn-primary {
+    @apply px-4 py-2 bg-white text-black font-medium rounded-lg hover:bg-gray-100
+    transition-all duration-150 text-sm disabled:opacity-40 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply px-4 py-2 bg-transparent border border-border text-text-muted font-medium rounded-lg
+    hover:border-border-light hover:text-text transition-all duration-150 text-sm
+    disabled:opacity-40 disabled:cursor-not-allowed;
+  }
+
+  .btn-ghost {
+    @apply px-3 py-1.5 bg-transparent text-text-muted rounded-md hover:bg-surface-3
+    hover:text-text transition-all duration-150 text-sm;
+  }
+
+  .btn-danger {
+    @apply px-4 py-2 bg-danger/10 border border-danger/30 text-danger font-medium rounded-lg
+    hover:bg-danger/20 transition-all duration-150 text-sm;
+  }
+
+  .card {
+    @apply bg-surface border border-border rounded-xl;
+  }
+
+  .card-hover {
+    @apply card hover:border-border-light transition-colors duration-150 cursor-pointer;
+  }
+
+  .tag {
+    @apply inline-flex items-center px-2 py-0.5 rounded-md text-xs font-medium;
+  }
+}
